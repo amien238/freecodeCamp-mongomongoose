@@ -44,6 +44,14 @@ const createManyPeople = (arrayOfPeople, done) => {
   });
 };
 
+arrayOfPeople.save()
+  .then(doc => {
+    console.log('Đã lưu thành công:', doc);
+  })
+  .catch(err => {
+    console.error('Lỗi khi lưu:', err.message);
+  });
+
 const findPeopleByName = (personName, done) => {
   done(null /*, data*/);
 };
