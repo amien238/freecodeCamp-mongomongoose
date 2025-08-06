@@ -90,7 +90,7 @@ const findEditThenSave = (personId, done) => {
 findEditThenSave("689309d4099f2a526c246d30", console.log); // Replace with a valid ID from your database
 
 const findAndUpdate = (personName, done) => {
-  const ageToSet = 20;
+  const ageToSet = 25;
   Person.findOneAndUpdate(
     { name: personName }, 
     { age: ageToSet },
