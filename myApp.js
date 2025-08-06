@@ -90,10 +90,20 @@ const findEditThenSave = (personId, done) => {
 findEditThenSave("689309d4099f2a526c246d30", console.log); // Replace with a valid ID from your database
 
 const findAndUpdate = (personName, done) => {
-  const ageToSet = 20;
-
-  done(null /*, data*/);
+  const ageToSet = 50;
+  Person.findAndUpdate(
+    { name: personName }, 
+    { age: ageToSet },
+    { new: true }, // Return the updated document
+    (err, updatedPerson) => {
+      if (err) return done(err);
+      if (!updatedPerson) return done(new Error("Person not found"));
+      done(null, updatedPerson);
+    }
+  );
 };
+
+findAndUpdate("A", console.log); // Replace with a valid name from your database
 
 const removeById = (personId, done) => {
   done(null /*, data*/);
