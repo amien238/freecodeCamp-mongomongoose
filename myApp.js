@@ -52,6 +52,8 @@ const findPeopleByName = (personName, done) => {
   done(null, data);
   });
 };
+findPeopleByName("Alice", console.log);
+
 
 const findOneByFood = (food, done) => {
   Person.findOne({ favoriteFoods: food }, (err, data) => {
@@ -59,10 +61,16 @@ const findOneByFood = (food, done) => {
     done(null, data);
   });
 };
+findOneByFood("Pizza", console.log);
+
 
 const findPersonById = (personId, done) => {
-  done(null /*, data*/);
+  Person.findById(personId, (err, data) => {
+    if (err) return done(err);    
+    done(null, data);
+  });
 };
+findPersonById("30", console.log); // Replace with a valid ID from your database
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
