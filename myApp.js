@@ -105,19 +105,23 @@ const findAndUpdate = (personName, done) => {
 findAndUpdate("Nguyen Van A", console.log); // Replace with a valid name from your database
 
 const removeById = (personId, done) => {
-  done(null /*, data*/);
+  Person.findByIdAndRemove(personId, (err, data) => {
+    if (err) return done(err);  
+    done(null, data);
+  });
 };
+removeById("689309d4099f2a526c246d30", console.log); // Replace with a valid ID from your database
 
 const removeManyPeople = (done) => {
   const nameToRemove = "Mary";
 
-  done(null /*, data*/);
+  
 };
 
 const queryChain = (done) => {
   const foodToSearch = "burrito";
 
-  done(null /*, data*/);
+  
 };
 
 /** **Well Done !!**
