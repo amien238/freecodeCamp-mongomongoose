@@ -74,36 +74,35 @@ const findPersonById = (personId, done) => {
 findPersonById("689309d4099f2a526c246d30", console.log); // Replace with a valid ID from your database
 
 const findEditThenSave = (personId, done) => {
-  const foodToAdd = "hamburger";
+  // const foodToAdd = "hamburger";
 
-  Person.findById(personId, (err, person) => {
-    if (err) return done(err);
-    if (!person) return done(new Error("Person not found"));
-    person.favoriteFoods.push(foodToAdd);
-    person.save((err, updatedPerson) => {
-      if (err) return done(err);
-      done(null, updatedPerson);
-    });
-  });
+  // Person.findById(personId, (err, person) => {
+  //   if (err) return done(err);
+  //   if (!person) return done(new Error("Person not found"));
+  //   person.favoriteFoods.push(foodToAdd);
+  //   person.save((err, updatedPerson) => {
+  //     if (err) return done(err);
+  //     done(null, updatedPerson);
+  //   });
+  // });
 };
 
 findEditThenSave("689309d4099f2a526c246d30", console.log); // Replace with a valid ID from your database
 
 const findAndUpdate = (personName, done) => {
-  const ageToSet = 50;
+  const ageToSet = 20;
   Person.findOneAndUpdate(
     { name: personName }, 
     { age: ageToSet },
     { new: true }, // Return the updated document
     (err, updatedPerson) => {
       if (err) return done(err);
-      if (!updatedPerson) return done(new Error("Person not found"));
       done(null, updatedPerson);
     }
   );
 };
 
-findAndUpdate("A", console.log); // Replace with a valid name from your database
+findAndUpdate("Nguyen Van A", console.log); // Replace with a valid name from your database
 
 const removeById = (personId, done) => {
   done(null /*, data*/);
