@@ -113,6 +113,15 @@ const removeById = (personId, done) => {
 removeById("689309d4099f2a526c246d30", console.log); // Replace with a valid ID from your database
 
 
+const removeManyPeople = (done) => {
+  const nameToRemove = "Mary";
+  Person.remove({ name: nameToRemove }, (err, data) => {
+    if (err) return done(err);
+    done(null, data);
+  });
+};
+
+
 const testRemoveManyPeople = () => {
   // Thêm một vài người tên "Mary"
   Person.create([
@@ -136,13 +145,6 @@ const testRemoveManyPeople = () => {
 };
 
 
-const removeManyPeople = (done) => {
-  const nameToRemove = "Mary";
-  Person.delete({ name: nameToRemove }, (err, data) => {
-    if (err) return done(err);
-    done(null, data);
-  });
-};
 
 testRemoveManyPeople();
 
