@@ -31,20 +31,6 @@ const createAndSavePerson = (done) => {
   });
 };
 
-const testPerson = new Person({
-  name: 'Nguyen Van A',
-  age: 25,
-  favoriteFoods: ['Pho', 'Banh Mi', 'Com tam']
-});
-
-testPerson.save()
-  .then(doc => {
-    console.log('Đã lưu thành công:', doc);
-  })
-  .catch(err => {
-    console.error('Lỗi khi lưu:', err.message);
-  });
-
 
 const arrayOfPeople = [
   { name: "Alice", age: 25, favoriteFoods: ["Salad", "Apple"] },
@@ -85,7 +71,7 @@ const findPersonById = (personId, done) => {
     done(null, data);
   });
 };
-findPersonById("20", console.log); // Replace with a valid ID from your database
+findPersonById("689309d4099f2a526c246d30", console.log); // Replace with a valid ID from your database
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
