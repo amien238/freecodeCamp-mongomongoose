@@ -112,14 +112,39 @@ const removeById = (personId, done) => {
 };
 removeById("689309d4099f2a526c246d30", console.log); // Replace with a valid ID from your database
 
+
+const testRemoveManyPeople = () => {
+  // Thêm một vài người tên "Mary"
+  Person.create([
+    { name: "Mary", age: 25, favoriteFoods: ["Pizza"] },
+    { name: "Mary", age: 30, favoriteFoods: ["Burger"] },
+    { name: "John", age: 28, favoriteFoods: ["Pasta"] },
+  ])
+    .then(() => {
+      removeManyPeople((err, result) => {
+        if (err) console.error(err);
+        else {
+          console.log("✅ Kết quả xóa:", result); // { acknowledged: true, deletedCount: 2 }
+          mongoose.connection.close();
+        }
+      });
+    })
+    .catch((e) => {
+      console.error("❌ Lỗi khi thêm dữ liệu test:", e);
+      mongoose.connection.close();
+    });
+};
+
+
 const removeManyPeople = (done) => {
-  const nameToRemove = "Nguyen Van A";
+  const nameToRemove = "Mary";
   Person.delete({ name: nameToRemove }, (err, data) => {
     if (err) return done(err);
     done(null, data);
   });
-  
 };
+
+testRemoveManyPeople();
 
 const queryChain = (done) => {
   const foodToSearch = "burrito";
