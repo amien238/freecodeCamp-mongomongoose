@@ -76,8 +76,18 @@ findPersonById("689309d4099f2a526c246d30", console.log); // Replace with a valid
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
 
-  done(null /*, data*/);
+  Person.findById(personId, (err, person) => {
+    if (err) return done(err);
+    if (!person) return done(new Error("Person not found"));
+    person.favoriteFoods.push(foodToAdd);
+    person.save((err, updatedPerson) => {
+      if (err) return done(err);
+      done(null, updatedPerson);
+    });
+  });
 };
+
+findEditThenSave("689309d4099f2a526c246d30", console.log); // Replace with a valid ID from your database
 
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
