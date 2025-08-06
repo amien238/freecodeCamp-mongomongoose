@@ -53,7 +53,7 @@ const findPeopleByName = (personName, done) => {
   done(null, data);
   });
 };
-findPeopleByName("A", console.log);
+findPeopleByName("Nguyen Van A", console.log);
 
 
 const findOneByFood = (food, done) => {
@@ -105,16 +105,19 @@ const findAndUpdate = (personName, done) => {
 findAndUpdate("Nguyen Van A", console.log); // Replace with a valid name from your database
 
 const removeById = (personId, done) => {
-  Person.findByIdAndRemove(personId, (err, data) => {
-    if (err) return done(err);  
-    done(null, data);
-  });
+  // Person.findByIdAndRemove(personId, (err, data) => {
+  //   if (err) return done(err);  
+  //   done(null, data);
+  // });
 };
 removeById("689309d4099f2a526c246d30", console.log); // Replace with a valid ID from your database
 
 const removeManyPeople = (done) => {
-  const nameToRemove = "Mary";
-
+  const nameToRemove = "Nguyen Van A";
+  Person.delete({ name: nameToRemove }, (err, data) => {
+    if (err) return done(err);
+    done(null, data);
+  });
   
 };
 
