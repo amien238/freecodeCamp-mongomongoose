@@ -18,25 +18,17 @@ const personSchema = new mongoose.Schema({
 
 const Person = mongoose.model('Person', personSchema);
 
-// Test: Tạo một người mới và lưu vào database
-const testPerson = new Person({
-  name: 'Nguyen Van A',
-  age: 25,
-  favoriteFoods: ['Pho', 'Banh Mi', 'Com tam']
-});
-
-testPerson.save()
-  .then(doc => {
-    console.log('Đã lưu thành công:', doc);
-  })
-  .catch(err => {
-    console.error('Lỗi khi lưu:', err.message);
+const createAndSavePerson = (done) => {
+  const person = new Person({
+    name: "John Doe",
+    age: 30,
+    favoriteFoods: ["pizza", "pasta"]
   });
 
-
-
-const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  person.save((err, data) => {
+    if (err) return done(err);
+    done(null, data);
+  });
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
