@@ -91,7 +91,7 @@ findEditThenSave("689309d4099f2a526c246d30", console.log); // Replace with a val
 
 const findAndUpdate = (personName, done) => {
   const ageToSet = 50;
-  Person.findAndUpdate(
+  Person.findOneAndUpdate(
     { name: personName }, 
     { age: ageToSet },
     { new: true }, // Return the updated document
